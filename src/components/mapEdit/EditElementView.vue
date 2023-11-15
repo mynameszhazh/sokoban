@@ -1,52 +1,35 @@
 <template>
-  <div
-    class="flex"
-    v-for="kind of pickData">
-    <div v-for="item of kind.value">
-      <img :src="item.imgUrl" />
-      {{ item.name }}
+  <div>
+    <div
+      v-for="(kind, key) in elements"
+      class="flex">
+      <div
+        v-for="item of elements[key]"
+        class="pr-[10px]"
+        @click="elementItemClick(item, kind)">
+        <img :src="item.img" />
+        {{ item.name }}
+      </div>
+    </div>
+
+    <div>
+      <div>当前选中: {{}}</div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const pickData: any[] = [
-  {
-    kind: 'bg',
-    value: [
-      {
-        id: 1,
-        imgUrl: '',
-        name: '地板'
-      },
-      {
-        id: 2,
-        imgUrl: '',
-        name: '墙'
-      }
-    ]
-  },
-  {
-    kind: 'pick',
-    value: [
-      {
-        id: 3,
-        imgUrl: '',
-        name: '玩家'
-      },
-      {
-        id: 4,
-        imgUrl: '',
-        name: '箱子'
-      },
-      {
-        id: 5,
-        imgUrl: '',
-        name: '放置点'
-      }
-    ]
-  }
-]
+import { reactive } from 'vue'
+import { tileElements } from '@/composables/mapEdit/tile'
+
+const elements = reactive({
+  tile: tileElements,
+  other: []
+})
+
+const elementItemClick = (data: any) => {
+  console.log('data:', data)
+}
 </script>
 
 <style scoped></style>

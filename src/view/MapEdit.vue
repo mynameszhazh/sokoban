@@ -5,7 +5,7 @@
       <div class="flex-auto bg-gray-600">
         <div
           class="flex"
-          v-for="rows of mapData">
+          v-for="rows of map.data">
           <div v-for="col of rows">
             <MapBlock :type="col" />
           </div>
@@ -16,8 +16,8 @@
     <!-- pick -->
     <div>
       <div>
-        <div>row: {{ mapData.length }}</div>
-        <div>col: {{ mapData[0].length }}</div>
+        <div>row: <input v-model="map.row" /></div>
+        <div>col: <input v-model="map.col" /></div>
       </div>
       <EditElementView />
     </div>
@@ -25,16 +25,14 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
 import MapDataDisplay from '@/components/mapEdit/MapDataDisplay.vue'
 import MapBlock from '@/components/mapEdit/MapBlock.vue'
 import EditElementView from '@/components/mapEdit/EditElementView.vue'
+import { useMap } from '@/composables/mapEdit/map'
 
-const mapData = reactive([
-  [1, 1, 1],
-  [1, 2, 1],
-  [1, 1, 3]
-])
+const { map, initMap } = useMap()
+
+initMap()
 </script>
 
 <style scoped></style>
