@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import Game from '@/view/game/index.vue'
-import MapEdit from '@/view/mapEdit/index.vue'
+import Game from '@/view/Game.vue'
+import MapEdit from '@/view/MapEdit.vue'
 
 const routes: RouteRecordRaw[] = [
   { path: '/', redirect: '/game' },
