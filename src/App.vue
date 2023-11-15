@@ -1,9 +1,8 @@
 <template>
-  <div>sokoman{{ map }}</div>
+  <!-- <div class="bg-red-100">sokoman{{ map }}</div> -->
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
 
-<script setup lang="ts">
-import { useMapStore } from './store'
-
-const { map } = useMapStore()
-</script>
+<script setup lang="ts"></script>
