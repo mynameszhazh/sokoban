@@ -6,8 +6,8 @@
         <div
           class="flex"
           v-for="rows of map.data">
-          <div v-for="col of rows">
-            <MapBlock :type="col" />
+          <div v-for="item of rows">
+            <MapBlock :data="item" />
           </div>
         </div>
       </div>

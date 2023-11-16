@@ -1,34 +1,33 @@
 <template>
   <div>
-    <div
-      v-for="(kind, key) in elements"
-      class="flex">
-      <div
-        v-for="item of elements[key]"
-        class="pr-[10px]"
-        @click="elementItemClick(item, kind)">
-        <img :src="item.img" />
-        {{ item.name }}
+    <div class="flex">
+      <div v-for="editElement of editElements.tile">
+        <EditElement :edit-element="editElement" />
       </div>
     </div>
 
     <div>
-      <div>当前选中: {{}}</div>
+      <div>当前选中: {{ selectEditElementTitle }}</div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
-import { tileElements } from '@/composables/mapEdit/tile'
+import { computed } from 'vue'
+import EditElement from './EditElement.vue'
 
-const elements = reactive({
-  tile: tileElements,
-  other: []
+import { currentSelectEditElement } from '@/composables/mapEdit/editElement'
+import { tileEditElements } from '@/composables/mapEdit/tile'
+
+const selectEditElementTitle = computed(() => {
+  if (!currentSelectEditElement.value) return '无选中'
+
+  return currentSelectEditElement.value?.title
 })
 
-const elementItemClick = (data: any) => {
-  console.log('data:', data)
+const editElements = {
+  tile: tileEditElements,
+  other: []
 }
 </script>
 
