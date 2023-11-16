@@ -16,13 +16,13 @@
 import { computed } from 'vue'
 import EditElement from './EditElement.vue'
 
-import { currentSelectEditElement } from '@/composables/mapEdit/editElement'
+import { currentSelectedEditElement } from '@/composables/mapEdit/editElement'
 import { tileEditElements } from '@/composables/mapEdit/tile'
 
 const selectEditElementTitle = computed(() => {
-  if (!currentSelectEditElement.value) return '无选中'
+  if (!currentSelectedEditElement.value) return '无选中'
 
-  return currentSelectEditElement.value?.title
+  return currentSelectedEditElement.value?.title
 })
 
 const editElements = {

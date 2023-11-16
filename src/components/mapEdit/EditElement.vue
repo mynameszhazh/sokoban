@@ -10,14 +10,14 @@
 <script setup lang="ts">
 import {
   type EditElement,
-  setCurrentSelectEditElement
+  setcurrentSelectedEditElement
 } from '@/composables/mapEdit/editElement.ts'
 const props = defineProps<{
   editElement: EditElement
 }>()
 
 const handleClick = () => {
-  setCurrentSelectEditElement(props.editElement)
+  setcurrentSelectedEditElement(props.editElement)
 }
 </script>
 

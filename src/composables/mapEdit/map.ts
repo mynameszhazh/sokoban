@@ -1,6 +1,5 @@
-import { EditElement, currentSelectEditElement } from './editElement';
-import { MapBlock } from './map';
-import { reactive } from "vue"
+import { reactive } from "vue";
+
 import { TileType } from "./tile";
 
 const data = [
@@ -59,17 +58,9 @@ export function useMap() {
     map.data = genData()
   }
 
-  function updateMapData(block: MapBlock) {
-    map.data[block.y][block.x] = {
-      ...block,
-      type: currentSelectEditElement.value?.type
-    }
-  }
-
   return {
     map,
     initMap,
-    updateMapData
   }
 }
 

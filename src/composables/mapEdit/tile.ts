@@ -24,3 +24,7 @@ export const tileEditElements: TileEditElement[] = [
   }
 ]
 
+
+export function isTile(element: EditElement): element is EditElement {
+  return element.type === TileType.floor || element.type === TileType.wall
+}
