@@ -1,10 +1,10 @@
 import { ref } from 'vue';
-import { TileType } from './tile.ts'
+import { MapType } from './map';
 
-
+export type EditElementType = MapType | 'cargo' | 'placePoint' | 'keeper';
 
 export interface EditElement {
-  type: TileType | 'cargo' | 'placePoint' | 'keeper';
+  type: EditElementType;
   title: string;
   imgSrc: string;
 }

@@ -1,6 +1,6 @@
 import WallImg from '@/assets/wall.png'
 import FloorImg from '@/assets/floor.png'
-import { type EditElement } from './editElement.ts'
+import { EditElementType, type EditElement } from './editElement.ts'
 
 export enum TileType {
   wall = 1,
@@ -27,4 +27,8 @@ export const tileEditElements: TileEditElement[] = [
 
 export function isTile(element: EditElement): element is EditElement {
   return element.type === TileType.floor || element.type === TileType.wall
+}
+
+export function isFloorByType(type: EditElementType): type is EditElementType {
+  return type === TileType.floor
 }

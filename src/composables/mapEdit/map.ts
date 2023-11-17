@@ -10,7 +10,7 @@ import { generateId } from "@/utils/id";
 //   [0, 0, 0, 0]
 // ]
 
-type MapType = TileType | undefined;
+export type MapType = TileType | undefined;
 
 export interface MapBlock {
   type: MapType;
