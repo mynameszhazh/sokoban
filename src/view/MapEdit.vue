@@ -2,13 +2,16 @@
   <div class="bg-white h-screen">
     <!-- 地图区域 -->
     <div class="flex">
-      <div class="flex-auto bg-gray-600">
+      <div class="flex-auto relative bg-gray-600">
         <div
           class="flex"
           v-for="rows of map.data">
           <div v-for="item of rows">
             <MapBlock :data="item" />
           </div>
+        </div>
+        <div>
+          <Keeper />
         </div>
       </div>
       <MapDataDisplay />
@@ -27,6 +30,7 @@
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue'
 
+import Keeper from '@/components/mapEdit/Keeper.vue'
 import MapDataDisplay from '@/components/mapEdit/MapDataDisplay.vue'
 import MapBlock from '@/components/mapEdit/MapBlock.vue'
 import EditElementView from '@/components/mapEdit/EditElementView.vue'

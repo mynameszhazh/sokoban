@@ -6,6 +6,12 @@
       </div>
     </div>
 
+    <div class="flex">
+      <div v-for="editElement of editElements.other">
+        <EditElement :edit-element="editElement" />
+      </div>
+    </div>
+
     <div>
       <div>当前选中: {{ selectEditElementTitle }}</div>
     </div>
@@ -18,6 +24,7 @@ import EditElement from './EditElement.vue'
 
 import { currentSelectedEditElement } from '@/composables/mapEdit/editElement'
 import { tileEditElements } from '@/composables/mapEdit/tile'
+import { keeperEditElement } from '@/composables/mapEdit/keeper'
 
 const selectEditElementTitle = computed(() => {
   if (!currentSelectedEditElement.value) return '无选中'
@@ -27,7 +34,7 @@ const selectEditElementTitle = computed(() => {
 
 const editElements = {
   tile: tileEditElements,
-  other: []
+  other: [keeperEditElement]
 }
 </script>
 

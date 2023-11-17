@@ -18,12 +18,14 @@
 import { computed } from 'vue'
 
 import { type MapBlock } from '@/composables/mapEdit/map'
-import { isTile, tileEditElements } from '@/composables/mapEdit/tile'
+import { TileType, isTile, tileEditElements } from '@/composables/mapEdit/tile'
 import { currentSelectedEditElement } from '@/composables/mapEdit/editElement'
 
 import { useCollectMapBlock } from '@/composables/mapEdit/collectMapBlock'
+import { useKeeper } from '@/composables/mapEdit/keeper'
 
 const { start, stop, collect } = useCollectMapBlock()
+const { updateKeeperPosition } = useKeeper()
 
 const elementImgSrc = computed(() => {
   const ret = tileEditElements.find((item) => item.type === props.data.type)
@@ -40,6 +42,8 @@ const update = () => {
   const editElementType = currentSelectedEditElement.value.type
   switch (editElementType) {
     case 'keeper':
+      updateKeeperPosition(props.data.x, props.data.y)
+      changeType(TileType.floor)
       break
     case 'cargo':
       break

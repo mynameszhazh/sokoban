@@ -1,6 +1,6 @@
 <template>
   <div
-    class="pr-[10px]"
+    class="w-[90px] p-[10px] flex flex-col justify-center items-center"
     @click="handleClick">
     <img :src="props.editElement.imgSrc" />
     {{ props.editElement.title }}
