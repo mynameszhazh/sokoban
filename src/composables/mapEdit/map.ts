@@ -50,7 +50,7 @@ export function useMap() {
     for (let i = 0; i < map.row; i++) {
       map.data[i] = []
       for (let j = 0; j < map.col; j++) {
-        const block = createMapBlock(j, i)
+        const block = createMapBlock(j, i, TileType.floor)
         map.data[i].push(block)
       }
     }
