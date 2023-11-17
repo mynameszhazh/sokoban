@@ -2,8 +2,11 @@
   <div
     v-show="isShowKeeper"
     @dblclick="handleDblclick"
-    class="absolute top-0 left-0">
-    <img :src="keeper.data.imgSrc" />
+    class="absolute"
+    style="top: 0; left: 0">
+    <img
+      class="block"
+      :src="keeper.data.imgSrc" />
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-[35px] w-[35px] bg-white border border-sky-500 select-none"
+    class="w-[var(--map-block-size)] h-[var(--map-block-size)] bg-white border border-sky-500 select-none"
     @click="() => update()"
     @mousemove="handleMousemove"
     @mousedown="handleDown">
@@ -10,7 +10,7 @@
       :src="elementImgSrc" />
     <div
       v-else
-      class="bg-red-500 w-[32px] h-[32px]"></div>
+      :class="`bg-red-500 w-[var(--map-block-size)] h-[var(--map-block-size)]`"></div>
   </div>
 </template>
 
@@ -27,14 +27,14 @@ import { useKeeper } from '@/composables/mapEdit/keeper'
 const { start, stop, collect } = useCollectMapBlock()
 const { updateKeeperPosition } = useKeeper()
 
+const props = defineProps<{
+  data: MapBlock
+}>()
+
 const elementImgSrc = computed(() => {
   const ret = tileEditElements.find((item) => item.type === props.data.type)
   return ret?.imgSrc
 })
-
-const props = defineProps<{
-  data: MapBlock
-}>()
 
 const update = () => {
   if (!currentSelectedEditElement.value) return

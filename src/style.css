@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+:root {
+  /* 每个地图块大小 */
+  --map-block-size: 35px;
+}
+
+body {
   background: black;
 }
