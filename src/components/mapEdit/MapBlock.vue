@@ -42,8 +42,10 @@ const update = () => {
   const editElementType = currentSelectedEditElement.value.type
   switch (editElementType) {
     case 'keeper':
-      updateKeeperPosition(props.data.x, props.data.y)
-      changeType(TileType.floor)
+      // 只能放置在地板上
+      if (props.data.type === TileType.floor) {
+        updateKeeperPosition(props.data.x, props.data.y)
+      }
       break
     case 'cargo':
       break
