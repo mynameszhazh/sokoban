@@ -16,8 +16,8 @@
     <!-- pick -->
     <div>
       <div>
-        <div>row: <input v-model="map.row" /></div>
-        <div>col: <input v-model="map.col" /></div>
+        <div>row: <input v-model="row" /></div>
+        <div>col: <input v-model="col" /></div>
       </div>
       <EditElementView />
     </div>
@@ -25,12 +25,26 @@
 </template>
 
 <script setup lang="ts">
+import { ref, watchEffect } from 'vue'
+
 import MapDataDisplay from '@/components/mapEdit/MapDataDisplay.vue'
 import MapBlock from '@/components/mapEdit/MapBlock.vue'
 import EditElementView from '@/components/mapEdit/EditElementView.vue'
 import { useMap } from '@/composables/mapEdit/map'
 
-const { map, initMap } = useMap()
+const { map, updateMapCol, updateMapRow, initMap } = useMap()
+
+const row = ref(8)
+const col = ref(8)
+watchEffect(() => {
+  if (!col.value) return
+  updateMapCol(col.value)
+})
+
+watchEffect(() => {
+  if (!row.value) return
+  updateMapRow(row.value)
+})
 
 initMap()
 </script>
