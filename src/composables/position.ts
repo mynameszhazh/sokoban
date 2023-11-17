@@ -8,7 +8,7 @@ interface Position {
   y: number;
 }
 
-export function useUserPosition(position: Position) {
+export function usePosition(position: Position) {
   const top = computed(() => {
     return position.y * MAP_BLOCK_SIZE;
   });

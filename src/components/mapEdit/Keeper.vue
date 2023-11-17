@@ -12,10 +12,10 @@
 
 <script setup lang="ts">
 import { useKeeper } from '@/composables/mapEdit/keeper'
-import { useUserPosition } from '@/composables/userPosition'
+import { usePosition } from '@/composables/position'
 
 const { keeper, isShowKeeper, hideKeeper } = useKeeper()
-const { positionStyle } = useUserPosition(keeper)
+const { positionStyle } = usePosition(keeper)
 
 const handleDblclick = () => {
   hideKeeper()
