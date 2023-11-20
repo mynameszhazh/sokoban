@@ -25,6 +25,7 @@ import EditElement from './EditElement.vue'
 import { currentSelectedEditElement } from '@/composables/mapEdit/editElement'
 import { tileEditElements } from '@/composables/mapEdit/tile'
 import { keeperEditElement } from '@/composables/mapEdit/keeper'
+import { cargoEditElement } from '@/composables/mapEdit/cargo'
 
 const selectEditElementTitle = computed(() => {
   if (!currentSelectedEditElement.value) return '无选中'
@@ -34,7 +35,7 @@ const selectEditElementTitle = computed(() => {
 
 const editElements = {
   tile: tileEditElements,
-  other: [keeperEditElement]
+  other: [keeperEditElement, cargoEditElement]
 }
 </script>
 
