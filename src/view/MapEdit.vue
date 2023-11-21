@@ -13,6 +13,7 @@
         <div>
           <Keeper />
           <Cargos />
+          <PlacePoints />
         </div>
       </div>
       <MapDataDisplay />
@@ -33,6 +34,7 @@ import { ref, watchEffect } from 'vue'
 
 import Keeper from '@/components/mapEdit/Keeper.vue'
 import Cargos from '@/components/mapEdit/Cargos.vue'
+import PlacePoints from '@/components/mapEdit/PlacePoints.vue'
 import MapDataDisplay from '@/components/mapEdit/MapDataDisplay.vue'
 import MapBlock from '@/components/mapEdit/MapBlock.vue'
 import EditElementView from '@/components/mapEdit/EditElementView.vue'

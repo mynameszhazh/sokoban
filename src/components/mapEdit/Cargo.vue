@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute"
+    class="absolute mapBlockSize"
     :style="positionStyle"
     @dblclick="handleDblclick">
     <img

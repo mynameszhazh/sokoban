@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-[var(--map-block-size)] h-[var(--map-block-size)] bg-white border border-sky-500 select-none"
+    class="mapBlockSize bg-white border border-sky-500 select-none"
     @click="() => update()"
     @mousemove="handleMousemove"
     @mousedown="handleDown">
@@ -10,7 +10,7 @@
       :src="elementImgSrc" />
     <div
       v-else
-      :class="`bg-red-500 w-[var(--map-block-size)] h-[var(--map-block-size)]`"></div>
+      class="mapBlockSize bg-red-500"></div>
   </div>
 </template>
 
@@ -32,10 +32,12 @@ import {
 import { useCollectMapBlock } from '@/composables/mapEdit/collectMapBlock'
 import { useKeeper } from '@/composables/mapEdit/keeper'
 import { useCargo } from '@/composables/mapEdit/cargo'
+import { usePlacePoint } from '@/composables/mapEdit/placePoint'
 
 const { start, stop, collect } = useCollectMapBlock()
 const { updateKeeperPosition } = useKeeper()
 const { addCorgo } = useCargo()
+const { addPlacePoint } = usePlacePoint()
 
 const props = defineProps<{
   data: MapBlock
@@ -66,6 +68,8 @@ const update = () => {
       changeType(TileType.FLOOR)
       break
     case OtherEditType.PLACE_POINT:
+      addPlacePoint(props.data.x, props.data.y)
+      changeType(TileType.FLOOR)
       break
     default:
       if (isTile(currentSelectedEditElement.value)) {

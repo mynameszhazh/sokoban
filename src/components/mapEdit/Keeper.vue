@@ -2,7 +2,7 @@
   <div
     v-show="isShowKeeper"
     @dblclick="handleDblclick"
-    class="absolute"
+    class="absolute mapBlockSize" 
     :style="positionStyle">
     <img
       class="block"

@@ -2,11 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background: black;
+}
+
 :root {
   /* 每个地图块大小 */
   --map-block-size: 35px;
 }
 
-body {
-  background: black;
+/* 地图块大小 css类 */
+.mapBlockSize {
+  width: var(--map-block-size);
+  height: var(--map-block-size);
 }
