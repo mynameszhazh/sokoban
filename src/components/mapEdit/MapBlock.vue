@@ -18,14 +18,24 @@
 import { computed } from 'vue'
 
 import { type MapBlock } from '@/composables/mapEdit/map'
-import { TileType, isTile, tileEditElements } from '@/composables/mapEdit/tile'
-import { currentSelectedEditElement } from '@/composables/mapEdit/editElement'
+import {
+  TileType,
+  isFloorByType,
+  isTile,
+  tileEditElements
+} from '@/composables/mapEdit/tile'
+import {
+  OtherEditType,
+  currentSelectedEditElement
+} from '@/composables/mapEdit/editElement'
 
 import { useCollectMapBlock } from '@/composables/mapEdit/collectMapBlock'
 import { useKeeper } from '@/composables/mapEdit/keeper'
+import { useCargo } from '@/composables/mapEdit/cargo'
 
 const { start, stop, collect } = useCollectMapBlock()
 const { updateKeeperPosition } = useKeeper()
+const { addCorgo } = useCargo()
 
 const props = defineProps<{
   data: MapBlock
@@ -41,19 +51,25 @@ const update = () => {
 
   const editElementType = currentSelectedEditElement.value.type
   switch (editElementType) {
-    case 'keeper':
+    case OtherEditType.KEEPER:
       // 只能放置在地板上
-      if (props.data.type === TileType.floor) {
+      if (isFloorByType(props.data.type)) {
+        updateKeeperPosition(props.data.x, props.data.y)
+      } else {
+        changeType(TileType.FLOOR)
         updateKeeperPosition(props.data.x, props.data.y)
       }
       break
-    case 'cargo':
+    case OtherEditType.CARGO:
+      addCorgo(props.data.x, props.data.y)
+      // 这里的 cargo 和 floor 应该是绑定在一起的
+      changeType(TileType.FLOOR)
       break
-    case 'placePoint':
+    case OtherEditType.PLACE_POINT:
       break
     default:
       if (isTile(currentSelectedEditElement.value)) {
-        changeType(editElementType)
+        changeType(editElementType as number)
       }
       break
   }
