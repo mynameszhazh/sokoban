@@ -26,6 +26,7 @@ import { currentSelectedEditElement } from '@/composables/mapEdit/editElement'
 import { tileEditElements } from '@/composables/mapEdit/tile'
 import { keeperEditElement } from '@/composables/mapEdit/keeper'
 import { cargoEditElement } from '@/composables/mapEdit/cargo'
+import { placePointEditElement } from '@/composables/mapEdit/placePoint'
 
 const selectEditElementTitle = computed(() => {
   if (!currentSelectedEditElement.value) return '无选中'
@@ -35,7 +36,7 @@ const selectEditElementTitle = computed(() => {
 
 const editElements = {
   tile: tileEditElements,
-  other: [keeperEditElement, cargoEditElement]
+  other: [keeperEditElement, cargoEditElement, placePointEditElement]
 }
 </script>
 
