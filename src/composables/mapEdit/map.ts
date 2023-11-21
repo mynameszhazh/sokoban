@@ -1,7 +1,7 @@
-import { reactive } from "vue";
+import { reactive } from 'vue'
 
-import { TileType } from "./tile";
-import { generateId } from "@/utils/id";
+import { TileType } from './tile'
+import { generateId } from '@/utils/id'
 
 // const data = [
 //   [0, 0, 0, 0],
@@ -10,19 +10,19 @@ import { generateId } from "@/utils/id";
 //   [0, 0, 0, 0]
 // ]
 
-export type MapType = TileType | undefined;
+export type MapType = TileType | undefined
 
 export interface MapBlock {
-  type: MapType;
-  x: number;
-  y: number;
-  id: number | string;
+  type: MapType
+  x: number
+  y: number
+  id?: number | string
 }
 
 export interface Map {
-  row: number;
-  col: number;
-  data: MapBlock[][];
+  row: number
+  col: number
+  data: MapBlock[][]
 }
 
 /**
@@ -39,18 +39,16 @@ function createMapBlock(x: number, y: number, type?: MapType): MapBlock {
     type,
     x,
     y,
-    id: generateId(),
-  };
+    id: generateId()
+  }
 }
 
-
 export function useMap() {
-
   function initMap() {
     for (let i = 0; i < map.row; i++) {
       map.data[i] = []
       for (let j = 0; j < map.col; j++) {
-        const block = createMapBlock(j, i, TileType.floor)
+        const block = createMapBlock(j, i, TileType.FLOOR)
         map.data[i].push(block)
       }
     }
@@ -66,7 +64,7 @@ export function useMap() {
         map.data.push(newRowData)
 
         // 在把新的行填满
-        let col = map.data[i].length;
+        let col = map.data[i].length
 
         for (let j = 0; j < col; j++) {
           const block = createMapBlock(j, oldRow + i)
@@ -108,7 +106,6 @@ export function useMap() {
     map,
     updateMapRow,
     updateMapCol,
-    initMap,
+    initMap
   }
 }
-

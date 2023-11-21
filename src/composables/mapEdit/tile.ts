@@ -1,10 +1,9 @@
-import WallImg from '@/assets/wall.png'
-import FloorImg from '@/assets/floor.png'
+import { EditElementImgSource } from '../img.ts'
 import { EditElementType, type EditElement } from './editElement.ts'
 
 export enum TileType {
-  wall = 1,
-  floor = 2,
+  WALL = 1,
+  FLOOR = 2
 }
 
 interface TileEditElement extends EditElement {
@@ -13,22 +12,21 @@ interface TileEditElement extends EditElement {
 
 export const tileEditElements: TileEditElement[] = [
   {
-    type: TileType.floor,
+    type: TileType.FLOOR,
     title: '地板',
-    imgSrc: FloorImg,
+    imgSrc: EditElementImgSource.FLOOR
   },
   {
-    type: TileType.wall,
+    type: TileType.WALL,
     title: '墙',
-    imgSrc: WallImg,
+    imgSrc: EditElementImgSource.WALL
   }
 ]
 
-
 export function isTile(element: EditElement): element is EditElement {
-  return element.type === TileType.floor || element.type === TileType.wall
+  return element.type === TileType.FLOOR || element.type === TileType.WALL
 }
 
 export function isFloorByType(type: EditElementType): type is EditElementType {
-  return type === TileType.floor
+  return type === TileType.FLOOR
 }

@@ -1,11 +1,11 @@
-import { reactive, ref } from 'vue';
-import { type EditElement } from './editElement.ts'
-import KeeperImg from '@/assets/keeper.png'
+import { reactive, ref } from 'vue'
+import { OtherEditType, type EditElement } from './editElement.ts'
+import { EditElementImgSource } from '../img.ts'
 
 export const keeperEditElement: EditElement = {
-  type: 'keeper',
+  type: OtherEditType.KEEPER,
   title: '玩家',
-  imgSrc: KeeperImg,
+  imgSrc: EditElementImgSource.KEEPER
 }
 
 const keeper = reactive({
