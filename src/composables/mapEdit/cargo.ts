@@ -46,8 +46,11 @@ export const useCargo = () => {
 
   function addCorgo(x: number, y: number) {
     if (isExsitCorgo(x, y)) {
-      cargos.push(createCargo(x, y))
+      const cargo = createCargo(x, y)
+      cargos.push(cargo)
+      return cargo
     }
+    return null
   }
 
   function reset() {

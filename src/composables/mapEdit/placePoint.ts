@@ -46,8 +46,11 @@ export const usePlacePoint = () => {
 
   function addPlacePoint(x: number, y: number) {
     if (isExsitPlacePoint(x, y)) {
-      placePoints.push(createPlacePoint(x, y))
+      const placePoint = createPlacePoint(x, y)
+      placePoints.push(placePoint)
+      return placePoint
     }
+    return null
   }
 
   function reset() {
