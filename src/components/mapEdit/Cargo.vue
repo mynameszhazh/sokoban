@@ -5,12 +5,12 @@
     @dblclick="handleDblclick">
     <img
       class="block"
-      :src="EditElementImgSource.CARGO" />
+      :src="ImgSource.CARGO" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { EditElementImgSource } from '@/composables/img'
+import { ImgSource } from '@/composables/img'
 import { type Cargo, useCargo } from '@/composables/mapEdit/cargo'
 import { usePosition } from '@/composables/position'
 

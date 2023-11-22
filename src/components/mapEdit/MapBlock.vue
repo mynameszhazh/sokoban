@@ -1,10 +1,11 @@
 <template>
   <div
-    class="mapBlockSize bg-white border border-sky-500 select-none"
+    class="bg-white border border-sky-500 select-none"
     @click="() => update()"
     @mousemove="handleMousemove"
     @mousedown="handleDown">
     <img
+      class="mapBlockSize"
       :draggable="false"
       v-if="elementImgSrc"
       :src="elementImgSrc" />
