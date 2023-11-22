@@ -5,12 +5,12 @@
     @dblclick="handleDblclick">
     <img
       class="block"
-      :src="EditElementImgSource.PLACE_POINT" />
+      :src="ImgSource.PLACE_POINT" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { EditElementImgSource } from '@/composables/img'
+import { ImgSource } from '@/composables/img'
 import {
   type PlacePoint,
   usePlacePoint

@@ -1,4 +1,4 @@
-import { EditElementImgSource } from '../img.ts'
+import { ImgSource } from '../img.ts'
 import { EditElementType, type EditElement } from './editElement.ts'
 
 export enum TileType {
@@ -14,12 +14,12 @@ export const tileEditElements: TileEditElement[] = [
   {
     type: TileType.FLOOR,
     title: '地板',
-    imgSrc: EditElementImgSource.FLOOR
+    imgSrc: ImgSource.FLOOR
   },
   {
     type: TileType.WALL,
     title: '墙',
-    imgSrc: EditElementImgSource.WALL
+    imgSrc: ImgSource.WALL
   }
 ]
 

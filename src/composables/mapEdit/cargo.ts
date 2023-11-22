@@ -1,7 +1,7 @@
 import { reactive } from 'vue'
 import { EditElement, OtherEditType } from './editElement'
 import { generateId } from '@/utils/id'
-import { EditElementImgSource } from '../img'
+import { ImgSource } from '../img'
 
 export interface Cargo {
   id: number
@@ -13,7 +13,7 @@ export interface Cargo {
 export const cargoEditElement: EditElement = {
   type: OtherEditType.CARGO,
   title: '箱子',
-  imgSrc: EditElementImgSource.CARGO
+  imgSrc: ImgSource.CARGO
 }
 
 const cargos = reactive<Cargo[]>([])

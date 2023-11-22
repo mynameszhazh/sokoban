@@ -1,7 +1,7 @@
 import { reactive } from 'vue'
 import { EditElement, OtherEditType } from './editElement'
 import { generateId } from '@/utils/id'
-import { EditElementImgSource } from '../img'
+import { ImgSource } from '../img'
 
 export interface PlacePoint {
   id: number
@@ -13,7 +13,7 @@ export interface PlacePoint {
 export const placePointEditElement: EditElement = {
   type: OtherEditType.PLACE_POINT,
   title: '放置点',
-  imgSrc: EditElementImgSource.PLACE_POINT
+  imgSrc: ImgSource.PLACE_POINT
 }
 
 const placePoints = reactive<PlacePoint[]>([])
@@ -61,6 +61,6 @@ export const usePlacePoint = () => {
     placePoints,
     reset,
     addPlacePoint,
-    removePlacePoint 
+    removePlacePoint
   }
 }
