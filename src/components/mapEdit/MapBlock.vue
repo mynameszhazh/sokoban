@@ -20,15 +20,12 @@ import { computed } from 'vue'
 
 import { type MapBlock } from '@/composables/mapEdit/map'
 import {
-  TileType,
   isFloorByType,
   isTile,
   tileEditElements
 } from '@/composables/mapEdit/tile'
-import {
-  OtherEditType,
-  currentSelectedEditElement
-} from '@/composables/mapEdit/editElement'
+import { TileType, OtherEditType } from '@/composables/type'
+import { currentSelectedEditElement } from '@/composables/mapEdit/editElement'
 
 import { useCollectMapBlock } from '@/composables/mapEdit/collectMapBlock'
 import { useKeeper } from '@/composables/mapEdit/keeper'

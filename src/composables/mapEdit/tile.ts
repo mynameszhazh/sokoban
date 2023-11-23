@@ -1,10 +1,8 @@
 import { ImgSource } from '../img.ts'
+import { TileType } from '../type.ts'
 import { EditElementType, type EditElement } from './editElement.ts'
 
-export enum TileType {
-  WALL = 1,
-  FLOOR = 2
-}
+
 
 interface TileEditElement extends EditElement {
   type: TileType

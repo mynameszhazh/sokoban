@@ -1,6 +1,6 @@
 import { reactive } from 'vue'
 
-import { TileType } from './tile'
+import { TileType } from '../type'
 import { generateId } from '@/utils/id'
 
 // const data = [

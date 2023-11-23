@@ -17,7 +17,7 @@
 
 <script lang="ts" setup>
 import { ImgSource } from '@/composables/img'
-import { TileType } from '@/composables/mapEdit/tile'
+import { TileType } from '@/composables/type'
 import { useMap } from '@/game'
 
 const { getCurrentGameData } = useMap()
