@@ -37,7 +37,7 @@ const map = reactive<Map>({
 function createMapBlock(
   x: number,
   y: number,
-  type?: MapType = TileType.FLOOR
+  type: MapType = TileType.FLOOR
 ): MapBlock {
   return {
     type,
