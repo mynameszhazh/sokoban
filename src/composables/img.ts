@@ -4,6 +4,7 @@ import EmptyImg from '@/assets/empty.png'
 
 import KeeperImg from '@/assets/keeper.png'
 import CargoImg from '@/assets/cargo.png'
+import cargoOnTargetImg from '@/assets/cargo_on_target.png'
 import PlacePointImg from '@/assets/target.png'
 
 export const ImgSource = {
@@ -15,5 +16,6 @@ export const ImgSource = {
   // 其他元素图片
   KEEPER: KeeperImg,
   CARGO: CargoImg,
+  CARGO_ON_TARGET: cargoOnTargetImg,
   PLACE_POINT: PlacePointImg
 }
