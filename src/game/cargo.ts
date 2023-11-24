@@ -1,5 +1,6 @@
 import { generateId } from '@/utils/id'
 import { PlacePoint } from '.'
+import { Position } from '@/composables/position'
 
 export interface Cargo {
   x: number
@@ -33,5 +34,11 @@ function createCargo(x: number, y: number): Cargo {
 export function createCargos(rawCargos: { x: number; y: number }[]): Cargo[] {
   return rawCargos.map((rawCargo) => {
     return createCargo(rawCargo.x, rawCargo.y)
+  })
+}
+
+export function getCargoByPosition(position: Position) {
+  return _cargos.find((c) => {
+    return c.x === position.x && c.y === position.y
   })
 }

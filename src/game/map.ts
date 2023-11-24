@@ -1,6 +1,7 @@
 import { TileType } from '@/composables/type'
 import { Floor } from './dao/Floor'
 import { Wall } from './dao/Wall'
+import { Position } from '@/composables/position'
 
 export type Element = Floor | Wall
 export interface Map {
@@ -15,6 +16,10 @@ export function setupMap(map: Map) {
 
 export function updataMap(rawMap: number[][]) {
   _map.data = convertRawMap(rawMap)
+}
+
+export function getElementByPosition(position: Position) {
+  return _map.data[position.y][position.x]
 }
 
 function convertRawMap(rawMap: number[][]): Element[][] {

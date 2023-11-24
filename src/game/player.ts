@@ -1,3 +1,5 @@
+import { Direction, move } from './move'
+
 export interface Player {
   x: number
   y: number
@@ -9,23 +11,27 @@ export function setupPlayer(player: Player) {
   _player = player
 }
 
+export function getPlayer() {
+  return _player
+}
+
 export function updatePlayer({ x, y }: { x: number; y: number }) {
   _player.x = x
   _player.y = y
 }
 
 export function moveUp() {
-  _player.y--
+  move(Direction.UP)
 }
 
 export function moveDown() {
-  _player.y++
+  move(Direction.DOWN)
 }
 
 export function moveLeft() {
-  _player.x--
+  move(Direction.LEFT)
 }
 
 export function moveRight() {
-  _player.x++
+  move(Direction.RIGHT)
 }

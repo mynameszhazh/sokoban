@@ -3,7 +3,7 @@ import { gameDatas } from './data/gameData'
 import { updatePlayer } from './player'
 
 export function startGame() {
-  let data = gameDatas[2]
+  let data = gameDatas[0]
   updataMap(data.map)
   updatePlayer(data.player)
   updateCargos(data.cargos)
