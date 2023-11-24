@@ -1,6 +1,6 @@
 <template>
   <PlacePointCom
-    v-for="placePoint of placePoints.data"
+    v-for="placePoint of placePoints"
     :key="placePoint.id"
     :data="placePoint" />
 </template>
@@ -8,9 +8,9 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
 import PlacePointCom from './PlacePoint.vue'
-import { type PlacePoints, setupPlacePoints } from '@/game'
+import { type PlacePoint, setupPlacePoints } from '@/game'
 
-const placePoints = reactive({} as PlacePoints)
+const placePoints = reactive([] as PlacePoint[])
 setupPlacePoints(placePoints)
 </script>
 

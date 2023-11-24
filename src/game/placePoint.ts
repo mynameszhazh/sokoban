@@ -1,30 +1,35 @@
+import { generateId } from '@/utils/id'
+
 export interface PlacePoint {
   x: number
   y: number
   id: string
 }
 
-export interface PlacePoints {
-  data: PlacePoint[]
-}
-// ? 这里需要也需要类来执行操作吗
+let _placePoints: PlacePoint[] = []
 
-let _placePoints: PlacePoints
-
-export function setupPlacePoints(placePoints: PlacePoints) {
+export function setupPlacePoints(placePoints: PlacePoint[]) {
   _placePoints = placePoints
 }
 
-export function updatePlacePoint(placePoints: { x: number; y: number }[]) {
-  _placePoints.data = cover(placePoints)
+export function updatePlacePoints(rawPlacePoints: { x: number; y: number }[]) {
+  rawPlacePoints.forEach((rawPlacePoint) => {
+    _placePoints.push(createPlacePoint(rawPlacePoint.x, rawPlacePoint.y))
+  })
 }
 
-function cover(placePoints: { x: number; y: number }[]): PlacePoint[] {
-  return placePoints.map((placePoint) => {
-    return {
-      x: placePoint.x,
-      y: placePoint.y,
-      id: `${placePoint.x}-${placePoint.y}`
-    }
+function createPlacePoint(x: number, y: number): PlacePoint {
+  return {
+    x,
+    y,
+    id: generateId()
+  }
+}
+
+export function createPlacePoints(
+  rawPlacePoints: { x: number; y: number }[]
+): PlacePoint[] {
+  return rawPlacePoints.map((rawPlacePoint) => {
+    return createPlacePoint(rawPlacePoint.x, rawPlacePoint.y)
   })
 }

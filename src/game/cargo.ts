@@ -1,31 +1,37 @@
+import { generateId } from '@/utils/id'
+import { PlacePoint } from '.'
+
 export interface Cargo {
   x: number
   y: number
   id: string
-  onTargetPoint: false
+  onTargetPoint?: PlacePoint | undefined
 }
-export interface Cargos {
-  data: Cargo[]
-}
+
 // ? 这里需要也需要类来执行操作吗
 
-let _cargos: Cargos
+let _cargos: Cargo[] = []
 
-export function setupCargos(cargos: Cargos) {
+export function setupCargos(cargos: Cargo[]) {
   _cargos = cargos
 }
 
-export function updateCargos(cargos: { x: number; y: number }[]) {
-  _cargos.data = cover(cargos)
+export function updateCargos(rawCargos: { x: number; y: number }[]) {
+  rawCargos.forEach((rawCargo) => {
+    _cargos.push(createCargo(rawCargo.x, rawCargo.y))
+  })
 }
 
-function cover(cargos: { x: number; y: number }[]): Cargo[] {
-  return cargos.map((cargo) => {
-    return {
-      x: cargo.x,
-      y: cargo.y,
-      id: `${cargo.x}-${cargo.y}`,
-      onTargetPoint: false
-    }
+function createCargo(x: number, y: number): Cargo {
+  return {
+    x,
+    y,
+    id: generateId()
+  }
+}
+
+export function createCargos(rawCargos: { x: number; y: number }[]): Cargo[] {
+  return rawCargos.map((rawCargo) => {
+    return createCargo(rawCargo.x, rawCargo.y)
   })
 }
