@@ -7,7 +7,7 @@ import {
 } from '@/composables/position'
 import { getPlayer } from './player'
 import { collisionCargo, collisionWall } from './collisionDetection'
-import { getCargoByPosition } from './cargo'
+import { getCargoByPosition, handleHitPlacePoint } from './cargo'
 
 export enum Direction {
   LEFT = 'left',
@@ -55,7 +55,8 @@ export function move(direction: Direction) {
     cargo[dirPropName] += 1 * dir
 
     // 放在了放置点上
-
+    handleHitPlacePoint(cargo);
+    
     // 判断是否游戏完成
   }
 

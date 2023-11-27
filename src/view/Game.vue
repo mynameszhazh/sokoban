@@ -1,9 +1,16 @@
 <template>
   <div class="text-red-200">
     <MapCom />
+    <PlacePoints />
     <Player />
     <Cargos />
-    <PlacePoints />
+    <!-- <div v-show="game.isWin">
+      <button
+        class="bg-red-500"
+        @click="handleNextCheckpoint">
+        下一关
+      </button>
+    </div> -->
   </div>
 </template>
 
@@ -16,6 +23,10 @@ import PlacePoints from '@/components/game/PlacePoints.vue'
 import { startGame } from '@/game'
 import { onMounted } from 'vue'
 
+// const handleNextCheckpoint = () => {
+//   game.nextCheckpoint()
+//   startGame()
+// }
 onMounted(() => {
   startGame()
 })

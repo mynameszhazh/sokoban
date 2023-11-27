@@ -1,3 +1,4 @@
+import { type Position } from '@/composables/position'
 import { generateId } from '@/utils/id'
 
 export interface PlacePoint {
@@ -31,5 +32,11 @@ export function createPlacePoints(
 ): PlacePoint[] {
   return rawPlacePoints.map((rawPlacePoint) => {
     return createPlacePoint(rawPlacePoint.x, rawPlacePoint.y)
+  })
+}
+
+export function getPointByPosition(position: Position) {
+  return _placePoints.find((point) => {
+    return point.x === position.x && point.y === position.y
   })
 }

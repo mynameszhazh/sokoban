@@ -1,5 +1,5 @@
 import { generateId } from '@/utils/id'
-import { PlacePoint } from '.'
+import { PlacePoint, getPointByPosition } from '.'
 import { Position } from '@/composables/position'
 
 export interface Cargo {
@@ -41,4 +41,20 @@ export function getCargoByPosition(position: Position) {
   return _cargos.find((c) => {
     return c.x === position.x && c.y === position.y
   })
+}
+
+function reset(cargo: Cargo) {
+  if (cargo.onTargetPoint) {
+    cargo.onTargetPoint = undefined
+  }
+}
+
+export function handleHitPlacePoint(cargo: Cargo) {
+  reset(cargo)
+
+  const point = getPointByPosition(cargo)
+
+  if (point) {
+    cargo.onTargetPoint = point
+  }
 }
