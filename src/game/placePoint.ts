@@ -14,9 +14,15 @@ export function setupPlacePoints(placePoints: PlacePoint[]) {
 }
 
 export function updatePlacePoints(rawPlacePoints: { x: number; y: number }[]) {
+  cleanAllPlacePoints()
+
   rawPlacePoints.forEach((rawPlacePoint) => {
     _placePoints.push(createPlacePoint(rawPlacePoint.x, rawPlacePoint.y))
   })
+}
+
+function cleanAllPlacePoints() {
+  _placePoints.length = 0
 }
 
 function createPlacePoint(x: number, y: number): PlacePoint {

@@ -18,9 +18,15 @@ export function setupCargos(cargos: Cargo[]) {
 }
 
 export function updateCargos(rawCargos: { x: number; y: number }[]) {
+  cleanAllCargos()
+
   rawCargos.forEach((rawCargo) => {
     _cargos.push(createCargo(rawCargo.x, rawCargo.y))
   })
+}
+
+function cleanAllCargos() {
+  _cargos.length = 0
 }
 
 function createCargo(x: number, y: number): Cargo {
@@ -57,4 +63,10 @@ export function handleHitPlacePoint(cargo: Cargo) {
   if (point) {
     cargo.onTargetPoint = point
   }
+}
+
+export function isAllCargoOnTarget() {
+  return _cargos.every((cargo) => {
+    return !!cargo.onTargetPoint
+  })
 }

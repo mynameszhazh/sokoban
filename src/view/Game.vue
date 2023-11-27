@@ -4,13 +4,13 @@
     <PlacePoints />
     <Player />
     <Cargos />
-    <!-- <div v-show="game.isWin">
+    <div v-show="game.isWin">
       <button
         class="bg-red-500"
         @click="handleNextCheckpoint">
         下一关
       </button>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -20,13 +20,16 @@ import Player from '@/components/game/Player.vue'
 import Cargos from '@/components/game/Cargos.vue'
 import PlacePoints from '@/components/game/PlacePoints.vue'
 
-import { startGame } from '@/game'
-import { onMounted } from 'vue'
+import { startGame, startNextLevel, setupGame, createGame } from '@/game'
+import { onMounted, reactive } from 'vue'
 
-// const handleNextCheckpoint = () => {
-//   game.nextCheckpoint()
-//   startGame()
-// }
+const game = reactive(createGame({ level: 1 }))
+setupGame(game)
+
+const handleNextCheckpoint = () => {
+  startNextLevel()
+}
+
 onMounted(() => {
   startGame()
 })

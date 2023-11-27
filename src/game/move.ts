@@ -6,6 +6,7 @@ import {
   calcUpPosition
 } from '@/composables/position'
 import { getPlayer } from './player'
+import { judgeGameWin } from "./game";
 import { collisionCargo, collisionWall } from './collisionDetection'
 import { getCargoByPosition, handleHitPlacePoint } from './cargo'
 
@@ -58,6 +59,7 @@ export function move(direction: Direction) {
     handleHitPlacePoint(cargo);
     
     // 判断是否游戏完成
+    judgeGameWin()
   }
 
   player[dirPropName] += 1 * dir
